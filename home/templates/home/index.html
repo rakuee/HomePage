@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Homepage</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f4f1eb;
+      --surface: #fffef9;
+      --text: #1a1a18;
+      --muted: #6b6b5e;
+      --accent: #2d5016;
+      --accent-light: #e8f0df;
+      --border: #d9d5ca;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    header .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    header nav a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    header nav a:hover { color: var(--accent); }
+
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .hero-text {
+      padding: 5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--border);
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 0.3rem 0.8rem;
+      border-radius: 2rem;
+      margin-bottom: 2rem;
+      width: fit-content;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    p.desc {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 40ch;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .github-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--surface);
+      background: var(--text);
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.25rem;
+      transition: background 0.2s, transform 0.15s;
+      width: fit-content;
+      letter-spacing: 0.01em;
+    }
+
+    .github-link:hover {
+      background: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .github-link svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+      background: var(--accent-light);
+      min-height: 420px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(15%);
+    }
+
+    .image-caption {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    footer {
+      padding: 1.5rem 3rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      main { grid-template-columns: 1fr; }
+      .hero-text { padding: 3rem 2rem; border-right: none; border-bottom: 1px solid var(--border); }
+      .hero-image { min-height: 280px; }
+      header, footer { padding: 1.5rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="/" class="logo">Mi Home Page</a>
+    <nav>
+      <a href="https://github.com/" target="_blank" rel="noopener">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-text">
+      <span class="tag">Bienvenidos</span>
+      <h1>Mi perfil <em>con Django</em></h1>
+      <p class="desc">
+        Esta es la homepage de mi proyecto. Construida con Django siguiendo
+        la documentación oficial, lista para crecer.
+      </p>
+      <a
+        class="github-link"
+        href="https://github.com/rakuee/HomePage.git"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Ver el repositorio en GitHub"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+        Ver en GitHub
+      </a>
+    </section>
+
+    <div class="hero-image">
+      <img
+        src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&auto=format&fit=crop&q=80"
+        alt="Código en pantalla representando desarrollo web"
+        loading="lazy"
+      >
+      <span class="image-caption">Django · Python · Web</span>
+    </div>
+    <section style="padding: 3rem 4rem; border-top: 1px solid var(--border);">
+  <h2 style="font-family: 'Syne', sans-serif; font-size: 1.4rem; margin-bottom: 2rem;">Sobre mí</h2>
+  <ul style="list-style: disc; padding-left: 1.5rem; color: var(--muted); line-height: 2.2;">
+    <li>Nombre: Tonatiuh</li>
+    <li>Rol: Desarrollador web</li>
+  </ul>
+
+  <h2 style="font-family: 'Syne', sans-serif; font-size: 1.4rem; margin: 2rem 0 1rem;">Habilidades tecnológicas</h2>
+  <ul style="list-style: disc; padding-left: 1.5rem; color: var(--muted); line-height: 2.2;">
+    <li>Lenguajes: Python</li>
+    <li>Frameworks: Django</li>
+    <li>Herramientas: Git, VS Code, Docker</li>
+  </ul>
+</section>
+  </main>
+
+  <footer>
+    <p>© 2026 Mi Proyecto — Hecho con Django</p>
+    <a href="https://docs.djangoproject.com/es/" target="_blank" rel="noopener">Docs Django ↗</a>
+  </footer>
+
+</body>
+</html>
